@@ -60,7 +60,7 @@
         <appAddComponent :addCode="appSetting"></appAddComponent>
         </div>
         <div class="tab">
-<!--          <webContractUs :contract="settings"></webContractUs>-->
+          <mailSendComponent :sendingE="appSetting"></mailSendComponent>
         </div>
       </div>
     </div>
@@ -70,10 +70,12 @@
 <script>
 import urlShortComponent from './UrlShortSettingComponent'
 import appAddComponent from './AddCodeComponent'
+import mailSendComponent from './EmailSendingComponent'
 export default {
   components:{
     urlShortComponent,
-    appAddComponent
+    appAddComponent,
+   mailSendComponent
   },
   data(){
     return{

@@ -6088,7 +6088,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['addCode'],
   data: function data() {
@@ -6132,6 +6131,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _UrlShortSettingComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UrlShortSettingComponent */ "./resources/js/components/backend/UrlShortSettingComponent.vue");
 /* harmony import */ var _AddCodeComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddCodeComponent */ "./resources/js/components/backend/AddCodeComponent.vue");
+/* harmony import */ var _EmailSendingComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EmailSendingComponent */ "./resources/js/components/backend/EmailSendingComponent.vue");
 //
 //
 //
@@ -6201,12 +6201,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     urlShortComponent: _UrlShortSettingComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
-    appAddComponent: _AddCodeComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
+    appAddComponent: _AddCodeComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
+    mailSendComponent: _EmailSendingComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -6453,6 +6455,123 @@ __webpack_require__.r(__webpack_exports__);
         phn_number: this.contract.phn_number
       }).then(function (ss) {
         _this.$toaster.success('Successfully Updated !.');
+      })["catch"](function (err) {
+        _this.$toaster.error(' Insert fail !.');
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/EmailSendingComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/EmailSendingComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['sendingE'],
+  name: "EmailSendingComponent",
+  data: function data() {
+    return {
+      email_from_name: '',
+      mail_from_address: '',
+      email_smtp_host: '',
+      email_port: '',
+      email_driver: '',
+      email_user_Name: '',
+      email_password: '',
+      email_encryption_type: ''
+    };
+  },
+  methods: {
+    sendEmailData: function sendEmailData() {
+      var _this = this;
+
+      axios.post('/app-emailSend-store', {
+        email_from_name: this.sendingE.email_from_name,
+        mail_from_address: this.sendingE.mail_from_address,
+        email_smtp_host: this.sendingE.email_smtp_host,
+        email_port: this.sendingE.email_port,
+        email_driver: this.sendingE.email_driver,
+        email_user_Name: this.sendingE.email_user_Name,
+        email_password: this.sendingE.email_password,
+        email_encryption_type: this.sendingE.email_encryption_type
+      }).then(function (ss) {
+        _this.$toaster.success('Successfully Updated !.'); // location.href='/settings'
+
       })["catch"](function (err) {
         _this.$toaster.error(' Insert fail !.');
       });
@@ -34396,6 +34515,45 @@ component.options.__file = "resources/js/components/backend/ContractUsComponent.
 
 /***/ }),
 
+/***/ "./resources/js/components/backend/EmailSendingComponent.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/backend/EmailSendingComponent.vue ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _EmailSendingComponent_vue_vue_type_template_id_d4ed3e2e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EmailSendingComponent.vue?vue&type=template&id=d4ed3e2e&scoped=true& */ "./resources/js/components/backend/EmailSendingComponent.vue?vue&type=template&id=d4ed3e2e&scoped=true&");
+/* harmony import */ var _EmailSendingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EmailSendingComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/backend/EmailSendingComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EmailSendingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EmailSendingComponent_vue_vue_type_template_id_d4ed3e2e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _EmailSendingComponent_vue_vue_type_template_id_d4ed3e2e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "d4ed3e2e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/backend/EmailSendingComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/backend/FooterComponent.vue":
 /*!*************************************************************!*\
   !*** ./resources/js/components/backend/FooterComponent.vue ***!
@@ -34938,6 +35096,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/backend/EmailSendingComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/backend/EmailSendingComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailSendingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EmailSendingComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/EmailSendingComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailSendingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/backend/FooterComponent.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************!*\
   !*** ./resources/js/components/backend/FooterComponent.vue?vue&type=script&lang=js& ***!
@@ -35378,6 +35552,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContractUsComponent_vue_vue_type_template_id_65542f77_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContractUsComponent_vue_vue_type_template_id_65542f77_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ContractUsComponent.vue?vue&type=template&id=65542f77&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/ContractUsComponent.vue?vue&type=template&id=65542f77&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/backend/EmailSendingComponent.vue?vue&type=template&id=d4ed3e2e&scoped=true&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/backend/EmailSendingComponent.vue?vue&type=template&id=d4ed3e2e&scoped=true& ***!
+  \**************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailSendingComponent_vue_vue_type_template_id_d4ed3e2e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailSendingComponent_vue_vue_type_template_id_d4ed3e2e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailSendingComponent_vue_vue_type_template_id_d4ed3e2e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EmailSendingComponent.vue?vue&type=template&id=d4ed3e2e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/EmailSendingComponent.vue?vue&type=template&id=d4ed3e2e&scoped=true&");
 
 
 /***/ }),
@@ -37599,7 +37790,7 @@ var render = function () {
                             fn: function (ref) {
                               var errors = ref.errors
                               return [
-                                _c("input", {
+                                _c("textarea", {
                                   directives: [
                                     {
                                       name: "model",
@@ -38067,7 +38258,12 @@ var render = function () {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "tab" }),
+        _c(
+          "div",
+          { staticClass: "tab" },
+          [_c("mailSendComponent", { attrs: { sendingE: _vm.appSetting } })],
+          1
+        ),
       ]),
     ]),
   ])
@@ -38565,6 +38761,614 @@ var render = function () {
                                       _vm.$set(
                                         _vm.contract,
                                         "phn_number",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "invalid-feedback d-block" },
+                                  [_vm._v(_vm._s(errors[0]))]
+                                ),
+                              ]
+                            },
+                          },
+                        ],
+                        null,
+                        true
+                      ),
+                    }),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v("Submit")]
+                ),
+              ]
+            ),
+          ]
+        },
+      },
+    ]),
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/EmailSendingComponent.vue?vue&type=template&id=d4ed3e2e&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/EmailSendingComponent.vue?vue&type=template&id=d4ed3e2e&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("ValidationObserver", {
+    ref: "form",
+    scopedSlots: _vm._u([
+      {
+        key: "default",
+        fn: function (ref) {
+          var handleSubmit = ref.handleSubmit
+          return [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function ($event) {
+                    $event.preventDefault()
+                    return handleSubmit(_vm.sendEmailData)
+                  },
+                },
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { attrs: { for: "email_from_name" } }, [
+                      _vm._v("Email From Name"),
+                    ]),
+                    _vm._v(" "),
+                    _c("ValidationProvider", {
+                      attrs: {
+                        vid: "email_from_name",
+                        name: "email_from_name",
+                        rules: "required",
+                      },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function (ref) {
+                              var errors = ref.errors
+                              return [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sendingE.email_from_name,
+                                      expression: "sendingE.email_from_name",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "email_from_name",
+                                    placeholder: "Email From Name",
+                                  },
+                                  domProps: {
+                                    value: _vm.sendingE.email_from_name,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.sendingE,
+                                        "email_from_name",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "invalid-feedback d-block" },
+                                  [_vm._v(_vm._s(errors[0]))]
+                                ),
+                              ]
+                            },
+                          },
+                        ],
+                        null,
+                        true
+                      ),
+                    }),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { attrs: { for: "mail_from_address" } }, [
+                      _vm._v("Mail From Address"),
+                    ]),
+                    _vm._v(" "),
+                    _c("ValidationProvider", {
+                      attrs: {
+                        vid: "mail_from_address",
+                        name: "mail_from_address",
+                        rules: "required",
+                      },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function (ref) {
+                              var errors = ref.errors
+                              return [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sendingE.mail_from_address,
+                                      expression: "sendingE.mail_from_address",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "mail_from_address",
+                                    placeholder: "Mail From Address",
+                                  },
+                                  domProps: {
+                                    value: _vm.sendingE.mail_from_address,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.sendingE,
+                                        "mail_from_address",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                              ]
+                            },
+                          },
+                        ],
+                        null,
+                        true
+                      ),
+                    }),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { attrs: { for: "email_smtp_host" } }, [
+                      _vm._v("Mail Host"),
+                    ]),
+                    _vm._v(" "),
+                    _c("ValidationProvider", {
+                      attrs: {
+                        vid: "email_smtp_host",
+                        name: "email_smtp_host",
+                        rules: "required",
+                      },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function (ref) {
+                              var errors = ref.errors
+                              return [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sendingE.email_smtp_host,
+                                      expression: "sendingE.email_smtp_host",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "email_smtp_host",
+                                    placeholder: "Mail Host",
+                                  },
+                                  domProps: {
+                                    value: _vm.sendingE.email_smtp_host,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.sendingE,
+                                        "email_smtp_host",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "invalid-feedback d-block" },
+                                  [_vm._v(_vm._s(errors[0]))]
+                                ),
+                              ]
+                            },
+                          },
+                        ],
+                        null,
+                        true
+                      ),
+                    }),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { attrs: { for: "email_port" } }, [
+                      _vm._v("Mail Port"),
+                    ]),
+                    _vm._v(" "),
+                    _c("ValidationProvider", {
+                      attrs: {
+                        vid: "email_port",
+                        name: "email_port",
+                        rules: "required",
+                      },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function (ref) {
+                              var errors = ref.errors
+                              return [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sendingE.email_port,
+                                      expression: "sendingE.email_port",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "email_port",
+                                    placeholder: "Mail Port",
+                                  },
+                                  domProps: { value: _vm.sendingE.email_port },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.sendingE,
+                                        "email_port",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "invalid-feedback d-block" },
+                                  [_vm._v(_vm._s(errors[0]))]
+                                ),
+                              ]
+                            },
+                          },
+                        ],
+                        null,
+                        true
+                      ),
+                    }),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { attrs: { for: "email_driver" } }, [
+                      _vm._v("Mail Driver"),
+                    ]),
+                    _vm._v(" "),
+                    _c("ValidationProvider", {
+                      attrs: {
+                        vid: "email_driver",
+                        name: "email_driver",
+                        rules: "required",
+                      },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function (ref) {
+                              var errors = ref.errors
+                              return [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sendingE.email_driver,
+                                      expression: "sendingE.email_driver",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "email_driver",
+                                    placeholder: "Mail Port",
+                                  },
+                                  domProps: {
+                                    value: _vm.sendingE.email_driver,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.sendingE,
+                                        "email_driver",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "invalid-feedback d-block" },
+                                  [_vm._v(_vm._s(errors[0]))]
+                                ),
+                              ]
+                            },
+                          },
+                        ],
+                        null,
+                        true
+                      ),
+                    }),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { attrs: { for: "email_user_Name" } }, [
+                      _vm._v("Mail User Name"),
+                    ]),
+                    _vm._v(" "),
+                    _c("ValidationProvider", {
+                      attrs: {
+                        vid: "email_user_Name",
+                        name: "email_user_Name",
+                        rules: "required",
+                      },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function (ref) {
+                              var errors = ref.errors
+                              return [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sendingE.email_user_Name,
+                                      expression: "sendingE.email_user_Name",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "email_user_Name",
+                                    placeholder: "Mail User Name",
+                                  },
+                                  domProps: {
+                                    value: _vm.sendingE.email_user_Name,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.sendingE,
+                                        "email_user_Name",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "invalid-feedback d-block" },
+                                  [_vm._v(_vm._s(errors[0]))]
+                                ),
+                              ]
+                            },
+                          },
+                        ],
+                        null,
+                        true
+                      ),
+                    }),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { attrs: { for: "email_password" } }, [
+                      _vm._v("Mail Password"),
+                    ]),
+                    _vm._v(" "),
+                    _c("ValidationProvider", {
+                      attrs: {
+                        vid: "email_password",
+                        name: "email_password",
+                        rules: "required",
+                      },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function (ref) {
+                              var errors = ref.errors
+                              return [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sendingE.email_password,
+                                      expression: "sendingE.email_password",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "email_password",
+                                    placeholder: "Mail Password",
+                                  },
+                                  domProps: {
+                                    value: _vm.sendingE.email_password,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.sendingE,
+                                        "email_password",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "invalid-feedback d-block" },
+                                  [_vm._v(_vm._s(errors[0]))]
+                                ),
+                              ]
+                            },
+                          },
+                        ],
+                        null,
+                        true
+                      ),
+                    }),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", { attrs: { for: "email_encryption_type" } }, [
+                      _vm._v("Mail Encryption type"),
+                    ]),
+                    _vm._v(" "),
+                    _c("ValidationProvider", {
+                      attrs: {
+                        vid: "email_encryption_type",
+                        name: "email_encryption_type",
+                        rules: "required",
+                      },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function (ref) {
+                              var errors = ref.errors
+                              return [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sendingE.email_encryption_type,
+                                      expression:
+                                        "sendingE.email_encryption_type",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "email_encryption_type",
+                                    placeholder: "Mail Encryption type",
+                                  },
+                                  domProps: {
+                                    value: _vm.sendingE.email_encryption_type,
+                                  },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.sendingE,
+                                        "email_encryption_type",
                                         $event.target.value
                                       )
                                     },

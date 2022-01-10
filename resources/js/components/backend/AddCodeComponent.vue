@@ -8,7 +8,6 @@
             <span class="invalid-feedback d-block">{{ errors[0] }}</span>
           </ValidationProvider>
         </div>
-
         <div class="form-group">
           <label for="tops_add">Top Add code</label>
           <ValidationProvider vid="tops_add" name="tops_add" rules="required" v-slot="{ errors }">
@@ -19,7 +18,7 @@
         <div class="form-group">
           <label for="bottom_add">bottom add code</label>
           <ValidationProvider vid="bottom_add" name="bottom_add" rules="required" v-slot="{ errors }">
-            <input type="text" class="form-control" v-model="addCode.bottom_add" id="bottom_add"  placeholder="Enter bottom add">
+            <textarea type="text" class="form-control" v-model="addCode.bottom_add" id="bottom_add"  placeholder="Enter bottom add"></textarea>
             <span class="invalid-feedback d-block">{{ errors[0] }}</span>
           </ValidationProvider>
         </div>

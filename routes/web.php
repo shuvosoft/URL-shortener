@@ -45,4 +45,5 @@ Route::get('/app-setting-get', [SettingController::class,'app_setting_get']);
 
 Route::post('/app-url-store', [SettingController::class,'app_url_store']);
 Route::post('/app-add-store', [SettingController::class,'app_add_store']);
+Route::post('/app-emailSend-store', [SettingController::class,'app_emailSend_store']);
 
