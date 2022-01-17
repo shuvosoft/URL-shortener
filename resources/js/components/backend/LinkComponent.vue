@@ -18,9 +18,10 @@
         <th>Date</th>
         </thead>
         <tbody>
-          <tr v-for="(link,index) in links.data" :key="index">
+<!--          <tr v-for="(link,index) in links.data" :key="index">-->
+          <tr v-for="(link,index) in links" :key="index">
             <td>{{ index + 1 }}</td>
-            <td>{{ link.link }}</td>
+            <td class="wid">{{ link.link }}</td>
             <td>{{link.hash}}</td>
             <td>{{link.view_count}}</td>
             <td>{{link.user_id}}</td>
@@ -42,13 +43,16 @@ export default {
       links: {}
     }
   },
+  created() {
+    this.allList()
+  },
   methods:{
     allList(){
       axios.get('/getLinks',{
 
       }).then((ss)=>{
         this.links = ss.data
-        // console.log(this.links)
+        console.log(this.links)
       }).catch((err)=>{
 
       })
@@ -58,5 +62,7 @@ export default {
 </script>
 
 <style scoped>
-
+.wid{
+  width: 30px;
+}
 </style>

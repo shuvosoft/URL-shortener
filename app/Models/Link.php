@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'link',
+        'user_id',
+        'hash',
+    ];
 
 
     public function user(){

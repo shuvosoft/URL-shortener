@@ -27,9 +27,10 @@
 <body>
 
 <div id="app">
-    <navbar-component @guest user="null" @else :user="{{Auth::user()}}" @endguest></navbar-component>
+    <navbar-component @guest user="null" @else :user="{{Auth::user()}}" :app_config="{{json_encode($appConfig)}}" @endguest></navbar-component>
 {{--    <footer-component></footer-component>--}}
 
+{{--    @dd($appConfig)--}}
 
     <!--============= ScrollToTop Section Starts Here =============-->
     <div class="overlayer" id="overlayer">

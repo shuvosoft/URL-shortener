@@ -4,7 +4,7 @@
       <div class="header-wrapper">
         <div class="logo">
           <a href="home">
-            <img src="assets/images/logo/logo.png" alt="logo">
+           <span> <img src="assets/images/logo/logo.png" alt="logo"></span><span>{{app_config.app_name}}</span>
           </a>
         </div>
         <ul class="menu">
@@ -40,7 +40,7 @@
 <script>
   export default {
   name: "NavbarComponent",
-    props:['user'],
+    props:['user','app_config'],
     mounted() {
       // console.log(this.user,'sssssssssss')
     },

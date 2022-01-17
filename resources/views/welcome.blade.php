@@ -2,8 +2,8 @@
 
 @section('content')
 
- <welcome-component></welcome-component>
- <footer-component></footer-component>
+ <welcome-component :app_config="{{json_encode($appConfig)}}"></welcome-component>
+ <footer-component :app_config="{{json_encode($appConfig)}}"></footer-component>
 
 @endsection
 

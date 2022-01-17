@@ -50,26 +50,26 @@
       <div class="footer-bottom">
         <div class="footer-bottom-area">
           <div class="left cl-white">
-            <p>&copy; Copyright 2020 | <a href="#0">Cortaly</a> By UIAXIS</p>
+            <p>{{app_config.footer_text}}</p>
           </div>
           <ul class="social-icons">
             <li>
-              <a href="#0" class="active">
+              <a :href="app_config.fb_link" class="active">
                 <i class="fab fa-facebook-f"></i>
               </a>
             </li>
             <li>
-              <a href="#0" class="">
-                <i class="fab fa-twitter"></i>
+              <a :href="app_config.youtube_link" class="">
+                <i class="fab fa-youtube"></i>
               </a>
             </li>
             <li>
-              <a href="#0" class="">
-                <i class="fab fa-pinterest-p"></i>
+              <a :href="app_config.linkedin_link" class="">
+                <i class="fab fa-linkedin"></i>
               </a>
             </li>
             <li>
-              <a href="#0" class="">
+              <a :href="app_config.instagram_link" class="">
                 <i class="fab fa-instagram"></i>
               </a>
             </li>
@@ -83,6 +83,7 @@
 
 <script>
 export default {
+  props:['app_config'],
   name: "FooterComponent"
 }
 </script>

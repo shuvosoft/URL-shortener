@@ -1,11 +1,12 @@
 <template>
-  <banner-component></banner-component>
+  <banner-component :banner="app_config"></banner-component>
 
 </template>
 
 <script>
 export default {
-name: "WelcomeComponent"
+  props:['app_config','app_config'],
+  name: "WelcomeComponent"
 }
 </script>
 

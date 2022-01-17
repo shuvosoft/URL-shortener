@@ -111,8 +111,9 @@ class ProfileController extends Controller
         return view('layouts.backend.link');
     }
 
-    public function get_link(Request $request){
-        $links = Link::latest()->paginate(2);
+    public function get_link(){
+        $links = Link::all();
+//        $links = Link::latest()->paginate(2);
         return response()->json($links);
     }
 }

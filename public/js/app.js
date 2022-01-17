@@ -5287,8 +5287,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "SlideComponent"
+  props: ['banner'],
+  name: "SlideComponent",
+  data: function data() {
+    return {
+      url: null,
+      error: null,
+      getLink: {}
+    };
+  },
+  methods: {
+    shortUrl: function shortUrl() {
+      var _this = this;
+
+      if (this.url && this.url !== '') {
+        this.error = null;
+        axios.post('/short-url', {
+          url: this.url
+        }).then(function (ss) {
+          _this.getLink = ss.data.data; // console.log(ss.data)
+
+          _this.$toaster.success('Successfully Insert !.'); // location.href='/settings'
+
+        })["catch"](function (err) {
+          console.log(err.data);
+
+          _this.$toaster.error(' Insert fail !.');
+        });
+      } else {
+        this.error = 'This Field Is Required';
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -5651,6 +5701,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['app_config'],
   name: "FooterComponent"
 });
 
@@ -5805,7 +5856,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "NavbarComponent",
-  props: ['user'],
+  props: ['user', 'app_config'],
   mounted: function mounted() {// console.log(this.user,'sssssssssss')
   },
   methods: {
@@ -6042,6 +6093,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['app_config', 'app_config'],
   name: "WelcomeComponent"
 });
 
@@ -6542,7 +6594,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['sendingE'],
+  props: ['sending_email'],
   name: "EmailSendingComponent",
   data: function data() {
     return {
@@ -6561,19 +6613,19 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post('/app-emailSend-store', {
-        email_from_name: this.sendingE.email_from_name,
-        mail_from_address: this.sendingE.mail_from_address,
-        email_smtp_host: this.sendingE.email_smtp_host,
-        email_port: this.sendingE.email_port,
-        email_driver: this.sendingE.email_driver,
-        email_user_Name: this.sendingE.email_user_Name,
-        email_password: this.sendingE.email_password,
-        email_encryption_type: this.sendingE.email_encryption_type
+        email_from_name: this.sending_email.email_from_name,
+        mail_from_address: this.sending_email.mail_from_address,
+        email_smtp_host: this.sending_email.email_smtp_host,
+        email_port: this.sending_email.email_port,
+        email_driver: this.sending_email.email_driver,
+        email_user_Name: this.sending_email.email_user_Name,
+        email_password: this.sending_email.email_password,
+        email_encryption_type: this.sending_email.email_encryption_type
       }).then(function (ss) {
         _this.$toaster.success('Successfully Updated !.'); // location.href='/settings'
 
       })["catch"](function (err) {
-        _this.$toaster.error(' Insert fail !.');
+        _this.$toaster.error('Insert fail !.');
       });
     }
   }
@@ -6686,6 +6738,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "LinkComponent",
   data: function data() {
@@ -6693,12 +6746,16 @@ __webpack_require__.r(__webpack_exports__);
       links: {}
     };
   },
+  created: function created() {
+    this.allList();
+  },
   methods: {
     allList: function allList() {
       var _this = this;
 
       axios.get('/getLinks', {}).then(function (ss) {
-        _this.links = ss.data; // console.log(this.links)
+        _this.links = ss.data;
+        console.log(_this.links);
       })["catch"](function (err) {});
     }
   }
@@ -12462,6 +12519,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=text][data-v-1b3fb73c], select[data-v-1b3fb73c] {\r\n  width: 100%;\r\n  padding: 5px 20px;\r\n  margin: 5px 0;\r\n  display: inline-block;\r\n  border: 1px solid #ccc;\r\n  border-radius: 4px;\r\n  box-sizing: border-box;\n}\ninput[type=submit][data-v-1b3fb73c] {\r\n  width: 100%;\r\n  background-color: #4CAF50;\r\n  color: white;\r\n  padding: 14px 20px;\r\n  margin: 8px 0;\r\n  border: none;\r\n  border-radius: 4px;\r\n  cursor: pointer;\n}\ninput[type=submit][data-v-1b3fb73c]:hover {\r\n  background-color: #45a049;\n}\ndiv[data-v-1b3fb73c] {\r\n  border-radius: 5px;\r\n  background-color: #f2f2f2;\r\n  padding: 20px;\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.wid[data-v-24a8488d]{\r\n  width: 30px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30747,6 +30828,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LinkComponent_vue_vue_type_style_index_0_id_24a8488d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LinkComponent_vue_vue_type_style_index_0_id_24a8488d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LinkComponent_vue_vue_type_style_index_0_id_24a8488d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/NavbarComponent.vue?vue&type=style&index=0&id=ea84b892&scoped=true&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/NavbarComponent.vue?vue&type=style&index=0&id=ea84b892&scoped=true&lang=css& ***!
@@ -34606,15 +34717,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _LinkComponent_vue_vue_type_template_id_24a8488d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LinkComponent.vue?vue&type=template&id=24a8488d&scoped=true& */ "./resources/js/components/backend/LinkComponent.vue?vue&type=template&id=24a8488d&scoped=true&");
 /* harmony import */ var _LinkComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LinkComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/backend/LinkComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _LinkComponent_vue_vue_type_style_index_0_id_24a8488d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css& */ "./resources/js/components/backend/LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _LinkComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _LinkComponent_vue_vue_type_template_id_24a8488d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
   _LinkComponent_vue_vue_type_template_id_24a8488d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -35279,6 +35392,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/backend/LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/backend/LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css& ***!
+  \********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LinkComponent_vue_vue_type_style_index_0_id_24a8488d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/backend/LinkComponent.vue?vue&type=style&index=0&id=24a8488d&scoped=true&lang=css&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/backend/NavbarComponent.vue?vue&type=style&index=0&id=ea84b892&scoped=true&lang=css&":
 /*!**********************************************************************************************************************!*\
   !*** ./resources/js/components/backend/NavbarComponent.vue?vue&type=style&index=0&id=ea84b892&scoped=true&lang=css& ***!
@@ -35725,107 +35851,200 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "banner-section" }, [
-      _c(
-        "div",
-        {
-          staticClass: "banner-bg bg_img",
-          attrs: { "data-background": "assets/images/banner/banner-bg.jpg" },
-        },
-        [
-          _c("div", { staticClass: "banner-bg-shape" }, [
-            _c("img", {
-              attrs: {
-                src: "assets/images/banner/banner-shape.png",
-                alt: "banner",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "round-1" }, [
-            _c("img", {
-              attrs: { src: "assets/images/banner/01.png", alt: "banner" },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "round-2" }, [
-            _c("img", {
-              attrs: { src: "assets/images/banner/02.png", alt: "banner" },
-            }),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "banner-content" }, [
-          _c("h3", { staticClass: "cate" }, [_vm._v("SHORTEN URLS AND")]),
-          _vm._v(" "),
-          _c("h1", { staticClass: "title" }, [_vm._v("Earn Money")]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Transforming long, ugly links into Shorten URLs and earn big money. Get paid by every person who visits your URLs."
-            ),
-          ]),
+  return _c("section", { staticClass: "banner-section" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "banner-content" }, [
+        _c("h3", { staticClass: "cate" }, [
+          _vm._v(_vm._s(_vm.banner.app_title)),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "banner-form-group" }, [
-          _c("h3", { staticClass: "subtitle" }, [
-            _vm._v("Shorten URL Is Just Simple"),
-          ]),
-          _vm._v(" "),
-          _c("form", { staticClass: "banner-form" }, [
+        _c("h1", { staticClass: "title" }, [
+          _vm._v(_vm._s(_vm.banner.sologan)),
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm.banner.second_sologan))]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "banner-form-group" }, [
+        _c("h3", { staticClass: "subtitle" }, [
+          _vm._v("Shorten URL Is Just Simple"),
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "banner-form",
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                return _vm.shortUrl.apply(null, arguments)
+              },
+            },
+          },
+          [
             _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.url,
+                  expression: "url",
+                },
+              ],
               attrs: {
                 type: "text",
                 placeholder: "Your URL here",
                 name: "url",
                 required: "",
               },
+              domProps: { value: _vm.url },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.url = $event.target.value
+                },
+              },
             }),
             _vm._v(" "),
-            _c("button", { attrs: { type: "submit" } }, [
-              _vm._v("Shorten "),
-              _c("i", { staticClass: "flaticon-startup" }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "banner-counter" }, [
-            _c("div", { staticClass: "counter-item" }, [
-              _c("h2", { staticClass: "counter-title" }, [
-                _c("span", { staticClass: "counter" }, [_vm._v("1,200,000")]),
-                _vm._v("+"),
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Links clicked per day")]),
-            ]),
+            _vm._m(1),
             _vm._v(" "),
-            _c("div", { staticClass: "counter-item" }, [
-              _c("h2", { staticClass: "counter-title" }, [
-                _c("span", { staticClass: "counter" }, [_vm._v("348,000,000")]),
-                _vm._v("+"),
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Shortened links in total")]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "counter-item" }, [
-              _c("h2", { staticClass: "counter-title" }, [
-                _c("span", { staticClass: "counter" }, [_vm._v("1,180,000")]),
-                _vm._v("+"),
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Happy users registered")]),
-            ]),
-          ]),
+            _vm.error
+              ? _c("div", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.error) + " "),
+                ])
+              : _vm._e(),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "container margin-top-20" }, [
+          _vm.getLink
+            ? _c("div", { staticClass: "row bg-white margin-top-20 py-3" }, [
+                _c("div", { staticClass: "col-md-6 text-black-50" }, [
+                  _c(
+                    "a",
+                    { attrs: { href: _vm.getLink.link, target: "_blank" } },
+                    [_vm._v(_vm._s(_vm.getLink.link))]
+                  ),
+                ]),
+                _vm._v(" "),
+                _vm.getLink.hash
+                  ? _c("div", { staticClass: "col-md-6" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "http://127.0.0.1:8000/" + _vm.getLink.hash,
+                            target: "_blank",
+                          },
+                        },
+                        [
+                          _c("span", { staticStyle: { color: "red" } }, [
+                            _vm._v("Your New Short Link :  "),
+                          ]),
+                          _vm._v(
+                            "http://127.0.0.1:8000/" + _vm._s(_vm.getLink.hash)
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(2),
+                    ])
+                  : _vm._e(),
+              ])
+            : _vm._e(),
         ]),
+        _vm._v(" "),
+        _vm._m(3),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "banner-bg bg_img",
+        attrs: { "data-background": "assets/images/banner/banner-bg.jpg" },
+      },
+      [
+        _c("div", { staticClass: "banner-bg-shape" }, [
+          _c("img", {
+            attrs: {
+              src: "assets/images/banner/banner-shape.png",
+              alt: "banner",
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "round-1" }, [
+          _c("img", {
+            attrs: { src: "assets/images/banner/01.png", alt: "banner" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "round-2" }, [
+          _c("img", {
+            attrs: { src: "assets/images/banner/02.png", alt: "banner" },
+          }),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", { attrs: { type: "submit" } }, [
+      _vm._v("Shorten "),
+      _c("i", { staticClass: "flaticon-startup" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "btn btn-primary cursor-pointer" }, [
+      _c("a", [_vm._v("Copy")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "banner-counter" }, [
+      _c("div", { staticClass: "counter-item" }, [
+        _c("h2", { staticClass: "counter-title" }, [
+          _c("span", { staticClass: "counter" }, [_vm._v("1,200,000")]),
+          _vm._v("+"),
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Links clicked per day")]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "counter-item" }, [
+        _c("h2", { staticClass: "counter-title" }, [
+          _c("span", { staticClass: "counter" }, [_vm._v("348,000,000")]),
+          _vm._v("+"),
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Shortened links in total")]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "counter-item" }, [
+        _c("h2", { staticClass: "counter-title" }, [
+          _c("span", { staticClass: "counter" }, [_vm._v("1,180,000")]),
+          _vm._v("+"),
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Happy users registered")]),
       ]),
     ])
   },
@@ -36376,185 +36595,191 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("footer", { staticClass: "footer-section padding-top" }, [
+    _c("div", {
+      staticClass: "footer-bg bg_img",
+      attrs: { "data-background": "assets/images/footer/footer-bg.jpg" },
+    }),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _c("div", { staticClass: "footer-bottom" }, [
+        _c("div", { staticClass: "footer-bottom-area" }, [
+          _c("div", { staticClass: "left cl-white" }, [
+            _c("p", [_vm._v(_vm._s(_vm.app_config.footer_text))]),
+          ]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "social-icons" }, [
+            _c("li", [
+              _c(
+                "a",
+                {
+                  staticClass: "active",
+                  attrs: { href: _vm.app_config.fb_link },
+                },
+                [_c("i", { staticClass: "fab fa-facebook-f" })]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: _vm.app_config.youtube_link } }, [
+                _c("i", { staticClass: "fab fa-youtube" }),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: _vm.app_config.linkedin_link } }, [
+                _c("i", { staticClass: "fab fa-linkedin" }),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: _vm.app_config.instagram_link } }, [
+                _c("i", { staticClass: "fab fa-instagram" }),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "footer-section padding-top" }, [
-      _c("div", {
-        staticClass: "footer-bg bg_img",
-        attrs: { "data-background": "assets/images/footer/footer-bg.jpg" },
+    return _c("div", { staticClass: "footer-bg d-md-block d-none" }, [
+      _c("img", {
+        attrs: { src: "assets/images/footer/wave.png", alt: "footer" },
       }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "section-header cl-white-499" }, [
+      _c("h5", { staticClass: "cate" }, [_vm._v("Contact Us")]),
       _vm._v(" "),
-      _c("div", { staticClass: "footer-bg d-md-block d-none" }, [
-        _c("img", {
-          attrs: { src: "assets/images/footer/wave.png", alt: "footer" },
-        }),
+      _c("h2", { staticClass: "title" }, [_vm._v("Get in touch!")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "We thrive to ensure that you get the most out of your experience"
+        ),
       ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "section-header cl-white-499" }, [
-          _c("h5", { staticClass: "cate" }, [_vm._v("Contact Us")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "form",
+      { staticClass: "contact-form", attrs: { id: "contact_form_submit" } },
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "name" } }, [_vm._v("Your Full Name")]),
           _vm._v(" "),
-          _c("h2", { staticClass: "title" }, [_vm._v("Get in touch!")]),
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "name",
+              id: "name",
+              placeholder: "Enter Your Full Name",
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("Your Email")]),
           _vm._v(" "),
-          _c("p", [
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "email",
+              id: "email",
+              placeholder: "Enter Your Email",
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "message" } }, [_vm._v("Message")]),
+          _vm._v(" "),
+          _c("textarea", {
+            attrs: {
+              name: "message",
+              id: "message",
+              placeholder: "Enter Your Message",
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group check-group" }, [
+          _c("input", {
+            attrs: { type: "checkbox", id: "check", required: "" },
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "check" } }, [
             _vm._v(
-              "We thrive to ensure that you get the most out of your experience"
+              "I agree to receive emails, newsletters and promotional messages"
             ),
           ]),
         ]),
         _vm._v(" "),
-        _c(
-          "form",
-          { staticClass: "contact-form", attrs: { id: "contact_form_submit" } },
-          [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "name" } }, [
-                _vm._v("Your Full Name"),
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                attrs: {
-                  type: "text",
-                  name: "name",
-                  id: "name",
-                  placeholder: "Enter Your Full Name",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "email" } }, [_vm._v("Your Email")]),
-              _vm._v(" "),
-              _c("input", {
-                attrs: {
-                  type: "text",
-                  name: "email",
-                  id: "email",
-                  placeholder: "Enter Your Email",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "message" } }, [_vm._v("Message")]),
-              _vm._v(" "),
-              _c("textarea", {
-                attrs: {
-                  name: "message",
-                  id: "message",
-                  placeholder: "Enter Your Message",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group check-group" }, [
-              _c("input", {
-                attrs: { type: "checkbox", id: "check", required: "" },
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "check" } }, [
-                _vm._v(
-                  "I agree to receive emails, newsletters and promotional messages"
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group text-center" }, [
-              _c("button", { attrs: { type: "submit" } }, [
-                _vm._v("Send Message"),
-              ]),
-            ]),
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "footer-top" }, [
-          _c("div", { staticClass: "logo" }, [
-            _c("a", { attrs: { href: "index.html" } }, [
-              _c("img", {
-                attrs: {
-                  src: "assets/images/logo/footer-logo.png",
-                  alt: "logo",
-                },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "links" }, [
-            _c("li", [
-              _c("a", { attrs: { href: "#0" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/images/footer/neteller.png",
-                    alt: "footer",
-                  },
-                }),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "#0" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/images/footer/skrill.png",
-                    alt: "footer",
-                  },
-                }),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "#0" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "assets/images/footer/paypal.png",
-                    alt: "footer",
-                  },
-                }),
-              ]),
-            ]),
+        _c("div", { staticClass: "form-group text-center" }, [
+          _c("button", { attrs: { type: "submit" } }, [_vm._v("Send Message")]),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "footer-top" }, [
+      _c("div", { staticClass: "logo" }, [
+        _c("a", { attrs: { href: "index.html" } }, [
+          _c("img", {
+            attrs: { src: "assets/images/logo/footer-logo.png", alt: "logo" },
+          }),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "links" }, [
+        _c("li", [
+          _c("a", { attrs: { href: "#0" } }, [
+            _c("img", {
+              attrs: {
+                src: "assets/images/footer/neteller.png",
+                alt: "footer",
+              },
+            }),
           ]),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "footer-bottom" }, [
-          _c("div", { staticClass: "footer-bottom-area" }, [
-            _c("div", { staticClass: "left cl-white" }, [
-              _c("p", [
-                _vm._v("© Copyright 2020 | "),
-                _c("a", { attrs: { href: "#0" } }, [_vm._v("Cortaly")]),
-                _vm._v(" By UIAXIS"),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "social-icons" }, [
-              _c("li", [
-                _c("a", { staticClass: "active", attrs: { href: "#0" } }, [
-                  _c("i", { staticClass: "fab fa-facebook-f" }),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#0" } }, [
-                  _c("i", { staticClass: "fab fa-twitter" }),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#0" } }, [
-                  _c("i", { staticClass: "fab fa-pinterest-p" }),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#0" } }, [
-                  _c("i", { staticClass: "fab fa-instagram" }),
-                ]),
-              ]),
-            ]),
+        _c("li", [
+          _c("a", { attrs: { href: "#0" } }, [
+            _c("img", {
+              attrs: { src: "assets/images/footer/skrill.png", alt: "footer" },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "#0" } }, [
+            _c("img", {
+              attrs: { src: "assets/images/footer/paypal.png", alt: "footer" },
+            }),
           ]),
         ]),
       ]),
@@ -36885,7 +37110,12 @@ var render = function () {
     [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "header-wrapper" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "logo" }, [
+            _c("a", { attrs: { href: "home" } }, [
+              _vm._m(0),
+              _c("span", [_vm._v(_vm._s(_vm.app_config.app_name))]),
+            ]),
+          ]),
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
@@ -36914,12 +37144,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "logo" }, [
-      _c("a", { attrs: { href: "home" } }, [
-        _c("img", {
-          attrs: { src: "assets/images/logo/logo.png", alt: "logo" },
-        }),
-      ]),
+    return _c("span", [
+      _c("img", { attrs: { src: "assets/images/logo/logo.png", alt: "logo" } }),
     ])
   },
   function () {
@@ -37595,7 +37821,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("banner-component")
+  return _c("banner-component", { attrs: { banner: _vm.app_config } })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38261,7 +38487,11 @@ var render = function () {
         _c(
           "div",
           { staticClass: "tab" },
-          [_c("mailSendComponent", { attrs: { sendingE: _vm.appSetting } })],
+          [
+            _c("mailSendComponent", {
+              attrs: { sending_email: _vm.appSetting },
+            }),
+          ],
           1
         ),
       ]),
@@ -38865,8 +39095,9 @@ var render = function () {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.sendingE.email_from_name,
-                                      expression: "sendingE.email_from_name",
+                                      value: _vm.sending_email.email_from_name,
+                                      expression:
+                                        "sending_email.email_from_name",
                                     },
                                   ],
                                   staticClass: "form-control",
@@ -38876,7 +39107,7 @@ var render = function () {
                                     placeholder: "Email From Name",
                                   },
                                   domProps: {
-                                    value: _vm.sendingE.email_from_name,
+                                    value: _vm.sending_email.email_from_name,
                                   },
                                   on: {
                                     input: function ($event) {
@@ -38884,7 +39115,7 @@ var render = function () {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.sendingE,
+                                        _vm.sending_email,
                                         "email_from_name",
                                         $event.target.value
                                       )
@@ -38935,8 +39166,10 @@ var render = function () {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.sendingE.mail_from_address,
-                                      expression: "sendingE.mail_from_address",
+                                      value:
+                                        _vm.sending_email.mail_from_address,
+                                      expression:
+                                        "sending_email.mail_from_address",
                                     },
                                   ],
                                   staticClass: "form-control",
@@ -38946,7 +39179,7 @@ var render = function () {
                                     placeholder: "Mail From Address",
                                   },
                                   domProps: {
-                                    value: _vm.sendingE.mail_from_address,
+                                    value: _vm.sending_email.mail_from_address,
                                   },
                                   on: {
                                     input: function ($event) {
@@ -38954,7 +39187,7 @@ var render = function () {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.sendingE,
+                                        _vm.sending_email,
                                         "mail_from_address",
                                         $event.target.value
                                       )
@@ -38999,8 +39232,9 @@ var render = function () {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.sendingE.email_smtp_host,
-                                      expression: "sendingE.email_smtp_host",
+                                      value: _vm.sending_email.email_smtp_host,
+                                      expression:
+                                        "sending_email.email_smtp_host",
                                     },
                                   ],
                                   staticClass: "form-control",
@@ -39010,7 +39244,7 @@ var render = function () {
                                     placeholder: "Mail Host",
                                   },
                                   domProps: {
-                                    value: _vm.sendingE.email_smtp_host,
+                                    value: _vm.sending_email.email_smtp_host,
                                   },
                                   on: {
                                     input: function ($event) {
@@ -39018,7 +39252,7 @@ var render = function () {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.sendingE,
+                                        _vm.sending_email,
                                         "email_smtp_host",
                                         $event.target.value
                                       )
@@ -39069,8 +39303,8 @@ var render = function () {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.sendingE.email_port,
-                                      expression: "sendingE.email_port",
+                                      value: _vm.sending_email.email_port,
+                                      expression: "sending_email.email_port",
                                     },
                                   ],
                                   staticClass: "form-control",
@@ -39079,14 +39313,16 @@ var render = function () {
                                     id: "email_port",
                                     placeholder: "Mail Port",
                                   },
-                                  domProps: { value: _vm.sendingE.email_port },
+                                  domProps: {
+                                    value: _vm.sending_email.email_port,
+                                  },
                                   on: {
                                     input: function ($event) {
                                       if ($event.target.composing) {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.sendingE,
+                                        _vm.sending_email,
                                         "email_port",
                                         $event.target.value
                                       )
@@ -39137,8 +39373,8 @@ var render = function () {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.sendingE.email_driver,
-                                      expression: "sendingE.email_driver",
+                                      value: _vm.sending_email.email_driver,
+                                      expression: "sending_email.email_driver",
                                     },
                                   ],
                                   staticClass: "form-control",
@@ -39148,7 +39384,7 @@ var render = function () {
                                     placeholder: "Mail Port",
                                   },
                                   domProps: {
-                                    value: _vm.sendingE.email_driver,
+                                    value: _vm.sending_email.email_driver,
                                   },
                                   on: {
                                     input: function ($event) {
@@ -39156,7 +39392,7 @@ var render = function () {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.sendingE,
+                                        _vm.sending_email,
                                         "email_driver",
                                         $event.target.value
                                       )
@@ -39207,8 +39443,9 @@ var render = function () {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.sendingE.email_user_Name,
-                                      expression: "sendingE.email_user_Name",
+                                      value: _vm.sending_email.email_user_Name,
+                                      expression:
+                                        "sending_email.email_user_Name",
                                     },
                                   ],
                                   staticClass: "form-control",
@@ -39218,7 +39455,7 @@ var render = function () {
                                     placeholder: "Mail User Name",
                                   },
                                   domProps: {
-                                    value: _vm.sendingE.email_user_Name,
+                                    value: _vm.sending_email.email_user_Name,
                                   },
                                   on: {
                                     input: function ($event) {
@@ -39226,7 +39463,7 @@ var render = function () {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.sendingE,
+                                        _vm.sending_email,
                                         "email_user_Name",
                                         $event.target.value
                                       )
@@ -39277,8 +39514,9 @@ var render = function () {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.sendingE.email_password,
-                                      expression: "sendingE.email_password",
+                                      value: _vm.sending_email.email_password,
+                                      expression:
+                                        "sending_email.email_password",
                                     },
                                   ],
                                   staticClass: "form-control",
@@ -39288,7 +39526,7 @@ var render = function () {
                                     placeholder: "Mail Password",
                                   },
                                   domProps: {
-                                    value: _vm.sendingE.email_password,
+                                    value: _vm.sending_email.email_password,
                                   },
                                   on: {
                                     input: function ($event) {
@@ -39296,7 +39534,7 @@ var render = function () {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.sendingE,
+                                        _vm.sending_email,
                                         "email_password",
                                         $event.target.value
                                       )
@@ -39347,9 +39585,10 @@ var render = function () {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.sendingE.email_encryption_type,
+                                      value:
+                                        _vm.sending_email.email_encryption_type,
                                       expression:
-                                        "sendingE.email_encryption_type",
+                                        "sending_email.email_encryption_type",
                                     },
                                   ],
                                   staticClass: "form-control",
@@ -39359,7 +39598,8 @@ var render = function () {
                                     placeholder: "Mail Encryption type",
                                   },
                                   domProps: {
-                                    value: _vm.sendingE.email_encryption_type,
+                                    value:
+                                      _vm.sending_email.email_encryption_type,
                                   },
                                   on: {
                                     input: function ($event) {
@@ -39367,7 +39607,7 @@ var render = function () {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.sendingE,
+                                        _vm.sending_email,
                                         "email_encryption_type",
                                         $event.target.value
                                       )
@@ -39510,11 +39750,11 @@ var render = function () {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.links.data, function (link, index) {
+          _vm._l(_vm.links, function (link, index) {
             return _c("tr", { key: index }, [
               _c("td", [_vm._v(_vm._s(index + 1))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(link.link))]),
+              _c("td", { staticClass: "wid" }, [_vm._v(_vm._s(link.link))]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(link.hash))]),
               _vm._v(" "),

@@ -60,7 +60,7 @@
         <appAddComponent :addCode="appSetting"></appAddComponent>
         </div>
         <div class="tab">
-          <mailSendComponent :sendingE="appSetting"></mailSendComponent>
+          <mailSendComponent :sending_email="appSetting"></mailSendComponent>
         </div>
       </div>
     </div>
